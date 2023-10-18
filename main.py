@@ -1,25 +1,32 @@
 import streamlit as st
-import pandas as pd
-import altair as alt
-import numpy as np
+from datetime import time, datetime
 
-st.header("st.write")
-st.write("Hello *world* :sunglasses:")
-st.write(12345)
+st.header("st.slider")
+st.subheader("Slider")
 
-df = pd.DataFrame({
-    "First Column": [1,2,3,4,5],
-    "Second Column": ["A","B","C","D","E"]
-})
+age = st.slider("Quantos anos você tem?", 0, 130, 25)
+st.write(f"Eu tenho {age} anos")
 
-st.write(df)
+st.subheader("Slider de Intervalo")
 
-st.write('Below is a DataFrame:', df, 'Above is a dataframe.')
+values = st.slider("Escolha um intervalo de valores", 0.0, 100.0, (25.0,75.0))
+st.write("Valores:", values)
 
-df2 = pd.DataFrame(
-     np.random.randn(200, 3),
-     columns=['a', 'b', 'c'])
-st.write(df2)
-c = alt.Chart(df2).mark_circle().encode(
-     x='a', y='b', size='c', color='c', tooltip=['a', 'b', 'c'])
-st.write(c)
+st.subheader('Slider de intervalo de tempo')
+
+appointment = st.slider(
+    "Agende um compromisso",
+    value=(time(11,30), time(12,45))
+    )
+
+st.write("O compromisso foi agenda para:", appointment)
+
+st.subheader('Slider de data e hora')
+
+start_time = st.slider(
+    "Quando vai começar?",
+    value=datetime(2020, 1, 1, 9, 30),
+    format="MM/DD/YY - hh:mm"
+)
+
+st.write("Início:", start_time)
