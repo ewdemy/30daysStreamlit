@@ -4,6 +4,8 @@ from datetime import time, datetime
 st.header("st.slider")
 st.subheader("Slider")
 
+st.write("Milton Fernandes")
+
 age = st.slider("Quantos anos você tem?", 0, 130, 25)
 st.write(f"Eu tenho {age} anos")
 
